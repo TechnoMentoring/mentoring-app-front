@@ -1,0 +1,76 @@
+<div *ngIf="loginService.getUserRole() === 'MENTOR'">
+  <app-start-mentor></app-start-mentor>
+</div>
+
+<body>
+  <main class="table">
+    <section class="table__header">
+      <h1>SELECCIONA EL HORARIO</h1>
+    </section>
+    <section class="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Fecha</th>
+            <th>Hora de inicio</th>
+            <th>Hora de fin</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let schedule of dataSource.data"
+            (click)="realizarAccion(schedule)"
+          >
+            <td>{{ schedule.idSchedule }}</td>
+            <td>{{ schedule.title }}</td>
+            <td>{{ formatDate(schedule.date) }}</td>
+            <td>{{ getFormattedTime(schedule.hourStart) }}</td>
+            <td>{{ getFormattedTime(schedule.hourEnd) }}</td>
+            <td>{{ schedule.state }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div></div>
+
+      <div class="selection">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let schedule of select.data">
+              <td>{{ schedule.idSchedule }}</td>
+              <td>{{ schedule.title }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="botones">
+        <div class="d-grid col-5">
+          <button
+            mat-raised-button
+            color="primary"
+            [routerLink]="
+              hasSelectedSchedule() ? '/schedule/updateMentor' : null
+            "
+            (click)="showErrorMessage()"
+            routerLinkActive="active"
+          >
+            UPDATE
+          </button>
+        </div>
+        <div class="d-grid col-5">
+          <button mat-raised-button color="warn">DELETE</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

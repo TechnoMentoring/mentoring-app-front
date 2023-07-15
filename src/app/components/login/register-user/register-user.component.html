@@ -1,0 +1,115 @@
+<body>
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col">
+        <div class="card-header">
+          <h1>Registro</h1>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="userForm" (ngSubmit)="createUser()">
+            <div class="form-group">
+              <label for="username" class="form-label">Nombre de Usuario</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                formControlName="username"
+                required
+              />
+              <div *ngIf="userForm.get('username')?.errors?.['required']">
+                Ingrese un username
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                required
+              />
+              <div *ngIf="userForm.get('password')?.errors?.['required']">
+                Ingrese una contraseña
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="dni" class="form-label">DNI</label>
+              <input
+                type="text"
+                class="form-control"
+                id="dni"
+                formControlName="dni"
+                required
+                pattern="[0-9]{8}"
+              />
+              <div *ngIf="userForm.get('dni')?.errors?.['required']">
+                Ingrese su DNI
+              </div>
+              <div
+                style="color: red"
+                *ngIf="userForm.get('dni')?.errors?.['pattern']"
+              >
+                El DNI debe contener tener 8 digitos
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                formControlName="name"
+                required
+              />
+              <div *ngIf="userForm.get('name')?.errors?.['required']">
+                Ingrese su nombre
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                required
+              />
+              <div *ngIf="userForm.get('email')?.errors?.['required']">
+                Ingrese su correo electronico
+              </div>
+              <div
+                style="color: red"
+                *ngIf="userForm.get('email')?.errors?.['email']"
+              >
+                Por favor ingresa un correo electrónico válido
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="profile" class="form-label">Perfil</label>
+              <select
+                class="form-control"
+                id="profile"
+                formControlName="profile"
+                required
+              >
+                <option value="" disabled selected>Selecciona un perfil</option>
+                <option value="Estudiante">Estudiante</option>
+                <option value="Mentor">Mentor</option>
+                <option value="Administrador">Administrador</option>
+              </select>
+              <div *ngIf="userForm.get('profile')?.errors?.['required']">
+                Elija un perfil
+              </div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>

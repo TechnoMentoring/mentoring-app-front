@@ -1,0 +1,70 @@
+<div *ngIf="loginService.getUserRole() === 'STUDENT'">
+  <app-start-student></app-start-student>
+</div>
+
+<!--<form [formGroup]="scheduleForm" (submit)="postMentor()">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="Email">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="Password">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput formControlName="dni" placeholder="DNI">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Add Mentor</button>
+  </form>-->
+
+  <body>
+    <main class="table">
+        <section class="table__header">
+            <h1>DISPONIBILIDAD</h1>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> idUser </th>
+                        <th> Name </th>
+                        <th> Username </th>
+                        <th> Email </th>
+                        <th> Dni </th>
+                        <th> Acciones </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let element of dataSourceU.data">
+                        <td>{{ element.idUser }}</td>
+                        <td>{{ element.name }}</td>
+                        <td>{{ element.username }}</td>
+                        <td>{{ element.email }}</td>
+                        <td>{{ element.dni }}</td>
+                        <td>
+                            <button color="primary" mat-raised-button (click)="realizarAccion(element)">
+                                Horarios
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-grid col-5">
+              <button
+                mat-raised-button
+                color="warn"
+                class="btn"
+                (click)="goBack()"
+              >
+                Atrás
+              </button>
+            </div>
+        </section>
+    </main>
+</body>
+

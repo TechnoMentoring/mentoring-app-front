@@ -1,0 +1,38 @@
+<div *ngIf="loginService.getUserRole() === 'ADMIN'">
+  <app-start-admin></app-start-admin>
+</div>
+
+
+<body>
+  <main class="table">
+    <section class="table__header">
+      <h1>DISPONIBILIDAD</h1>
+    </section>
+    <section class="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>DNI</th>
+            <th>Password</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Object of dataSource.data">
+            <td>{{ Object.idUser }}</td>
+            <td>{{ Object.username }}</td>
+            <td>{{ Object.name }}</td>
+            <td>{{ Object.email }}</td>
+            <td>{{ Object.dni }}</td> 
+            <td>************</td>
+            <td>{{ Object.profile }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>

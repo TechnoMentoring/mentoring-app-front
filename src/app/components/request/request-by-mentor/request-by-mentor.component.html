@@ -1,0 +1,49 @@
+<div *ngIf="loginService.getUserRole() === 'MENTOR'">
+  <app-start-mentor></app-start-mentor>
+</div>
+
+<body>
+  <main class="table">
+    <section class="table__header">
+      <h1>SOLICITUDES RECIBIDAS</h1>
+    </section>
+    <section class="table__body">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Scheduler</th>
+            <th>TÍTULO</th>
+            <th>FECHA</th>
+            <th>HORA</th>
+            <th>Descripción</th>
+            <th>ESTADO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of dataSource.data">
+            <td>{{ element.idRequest }}</td>
+            <td>{{ element.idSchedule }}</td>
+            <td>{{ element.title }}</td>
+            <td>{{ formatDate(element.date) }}</td>
+            <td>{{ getFormattedTime(element.hour) }}</td>
+            <td>{{ element.description }}</td>
+            <td>
+              <p class="status delivered" *ngIf="element.isPaid">Pagado</p>
+            </td>
+            <td>   <mat-button-toggle-group [disabled]="element.isPaid" color="primary" [(ngModel)]="element.status" (ngModelChange)="updateStatus(element)" >
+              <mat-button-toggle class="aceptado" value="Aceptado" [disabled]="element.isPaid">Aceptar</mat-button-toggle>
+              <mat-button-toggle class="denegado" value="Denegado" [disabled]="element.isPaid">Denegar</mat-button-toggle>
+            </mat-button-toggle-group>
+          </td>
+          <td><mat-button-toggle-group *ngIf="element.isPaid" color="primary"   routerLinkActive="active">
+            <mat-button-toggle class="reprogramar" value="reprogramar"   (click)="realizarAccion(element.idSchedule)" >REPROGRAMAR</mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>

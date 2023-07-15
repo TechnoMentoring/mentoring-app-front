@@ -1,0 +1,45 @@
+
+<div *ngIf="loginService.getUserRole() === 'STUDENT'">
+  <app-start-student></app-start-student>
+</div>
+
+
+<body>
+  <main class="table">
+      <section class="table__header">
+          <h1>REPORTE DE MIS PAGOS
+          </h1>
+      </section>
+      <section class="table__body">
+          <table>
+              <thead>
+                  <tr>
+                      <th> ID </th>
+                      <th> ID Solicitud </th>
+                      <th> Fecha </th>
+                      <th> Hora </th>
+                      <th> Descripcion </th>
+                      <th> Estado </th>
+                      <th> Monto </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let element of dataSource.data">
+                      <td>{{ element.idPayment }}</td>
+                      <td>{{ element.idRequest }}</td>
+                      <td>{{ element.date }}</td>
+                      <td>{{ element.hour }}</td>
+                      <td>{{ element.description }}</td>
+                      <td >{{ element.status }}</td>
+                      <td>{{ element.amount }}</td>
+                  </tr>
+              </tbody>
+          </table>
+          <div class="botones">
+                <button  class="image-button" (click)="generatePDF()">                
+                  <img src="../../../../assets/images/export.png" >
+                </button>
+          </div>  
+      </section>
+  </main>
+</body>

@@ -1,0 +1,41 @@
+<div class="container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="idSchedule">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.idSchedule }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="idMentor">
+      <th mat-header-cell *matHeaderCellDef>ID MENTOR</th>
+      <td mat-cell *matCellDef="let element">{{ element.idMentor }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>TITULO</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>FECHA</th>
+      <td mat-cell *matCellDef="let element">{{ formatDate(element.date) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="hourStart">
+      <th mat-header-cell *matHeaderCellDef>HORA DE INICIO</th>
+      <td mat-cell *matCellDef="let element">{{ getFormattedTime(element.hourStart) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="hourEnd">
+      <th mat-header-cell *matHeaderCellDef>HORA DE FIN</th>
+      <td mat-cell *matCellDef="let element">{{ getFormattedTime(element.hourEnd) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef>ESTADO</th>
+      <td mat-cell *matCellDef="let element">{{ element.state }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

@@ -1,0 +1,102 @@
+<div *ngIf="loginService.getUserRole() === 'MENTOR'">
+  <app-start-mentor></app-start-mentor>
+</div>
+
+<div *ngIf="loginService.getUserRole() === 'STUDENT'">
+  <app-start-student></app-start-student>
+</div>
+
+<div *ngIf="loginService.getUserRole() === 'ADMIN'">
+  <app-start-admin></app-start-admin>
+</div>
+
+<body>
+  <main class="table">
+    <section class="table__header">
+      <h1>BIENVENIDO A TECNOMENTORING</h1>
+    </section>
+    <section class="table__body">
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card mb-4">
+              <div class="card-header">Información General</div>
+              <div class="card-body">
+                <h5 class="card-title">Empresa Educativa</h5>
+                <p class="card-text">
+                    TechMentoring es una empresa de mentoría comprometida con el crecimiento y el éxito de los estudiantes de programación. Nuestro enfoque centrado en el estudiante, nuestros mentores expertos y nuestra comunidad de apoyo brindan a los estudiantes las herramientas y el apoyo necesarios para sobresalir en el campo de la programación y alcanzar sus metas profesionales.
+                </p>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-header">Estadísticas </div>
+              <div class="card-body">
+                <ul>
+                  <li>Número de estudiantes matriculados: 1000</li>
+                  <li>Número de profesores: 50</li>
+                  <li>Número de cursos ofrecidos: 20</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-header">Descripción de los Estudiantes</div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="student-description">
+                          <h5>Estudiante 1</h5>
+                          <p>Edad: 20 años</p>
+                          <p>>Gustos:Horarios flexibles</p>
+                          <p>Intereses: Programación</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="student-description">
+                          <h5>Estudiante 2</h5>
+                          <p>Edad: 22 años</p>
+                          <p>Gustos:Horarios flexibles</p>
+                          <p>Intereses: Programación</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="student-description">
+                          <h5>Estudiante 3</h5>
+                          <p>Edad: 19 años</p>
+                          <p>>Gustos:Horarios flexibles</p>
+                          <p>Intereses: Programacion</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Otras secciones -->
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card mb-4">
+              <div class="card-header">Calendario </div>
+              <div class="card-body">
+                <!-- Calendario académico -->
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-header">Novedades o Noticias</div>
+              <div class="card-body">
+                <!-- Últimas noticias o eventos -->
+              </div>
+            </div>
+
+            <!-- Otras secciones -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

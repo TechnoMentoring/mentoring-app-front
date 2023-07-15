@@ -1,0 +1,48 @@
+<div *ngIf="loginService.getUserRole() === 'STUDENT'">
+  <app-start-student></app-start-student>
+</div>
+
+<body>
+  <main class="table">
+    <section class="table__header">
+      <h1>SOLICITUDES</h1>
+    </section>
+    <section class="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID Scheduler</th>
+            <th>TÍTULO</th>
+            <th>FECHA</th>
+            <th>HORA</th>
+            <th>Descripción</th>
+            <th>ESTADO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of dataSource.data">
+            <td>{{ element.idRequest }}</td>
+            <td>{{ element.idSchedule }}</td>
+            <td>{{ element.title }}</td>
+            <td>{{ formatDate(element.date) }}</td>
+            <td>{{ getFormattedTime(element.hour) }}</td>
+            <td>{{ element.description }}</td>
+            <td>{{ element.status }}</td>
+            <td>
+
+              <button mat-raised-button [disabled]="element.status !== 'Aceptado' || element.isPaid" (click)="realizarAccion(element)">
+                {{ element.isPaid ? 'Pagado' : 'Pagar' }}
+              </button>
+              
+
+
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>

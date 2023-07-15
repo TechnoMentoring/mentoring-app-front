@@ -1,0 +1,64 @@
+<!-- <header class="navbar">
+  <div class="navbar-brand">TECNOMENTORING</div>
+  <nav class="navbar-nav">
+
+
+    <button class="navegador" mat-button [matMenuTriggerFor]="opciones">Opciones</button>
+    <mat-menu #opciones="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="Administrador">
+        Administrador
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="Estudiante">
+        Estudinate
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="Docente">
+        Docente
+      </button>
+    </mat-menu>
+
+    <mat-menu #Administrador="matMenu">
+      <button mat-menu-item [routerLink]="'/schedule-planning/select'" routerLinkActive="active">renovar horario</button>
+      <button mat-menu-item [routerLink]="'/schedule-planning/all'" routerLinkActive="active">listar horarios</button>
+      <button mat-menu-item>reporte de ingresos por mentorias</button>
+      <button mat-menu-item>Listar detalles de pago</button>
+    </mat-menu>
+
+    <mat-menu #Estudiante="matMenu">
+      <button mat-menu-item [routerLink]="'/mentors'" routerLinkActive="active">listar horario de mentor</button>
+      <button mat-menu-item>solicitar</button>
+      <button mat-menu-item>reprogramar solicitud</button>
+      <button mat-menu-item  [routerLink]="'/payment/register'" routerLinkActive="active">pagar</button>
+      <button mat-menu-item>listar solicitudes de mentorias</button>
+      <button mat-menu-item>listar deltalles de pago</button>
+
+    </mat-menu>
+
+    <mat-menu #Docente="matMenu">
+      <button mat-menu-item [routerLink]="'/schedule-planning/creation'" routerLinkActive="active">crear horario</button>
+      <button mat-menu-item [routerLink]="'/schedule-planning/select'" routerLinkActive="active">renovar horario</button>
+        <button mat-menu-item>listar mis horarios</button>
+        <button mat-menu-item>listar solicitudes</button>
+        <button mat-menu-item>solicitudes aceptadas</button>
+        <button mat-menu-item >reprogramar solicitud</button>
+        <button mat-menu-item>reporte de ingresos por mentorias</button>
+      </mat-menu>
+    <a routerLink="/home" routerLinkActive="active">Inicio</a>
+    <a routerLink="/mentors" routerLinkActive="active">mentores</a>
+    <a routerLink="/student" routerLinkActive="active">students</a>
+    <a routerLink="/login/register" routerLinkActive="active">SIGN</a>
+    <a routerLink="/login/login" routerLinkActive="active">LOGIN</a>
+  </nav>
+</header> -->
+
+
+
+<body ng-app="myApp" ng-controller="myCtrl">
+  <div class="navbar">
+    <div class="navbar__title">TECNOMENTORING</div>
+    <div class="navbar__links">
+      <a *ngIf="!loginService.isLoggetIn()"  class="navbar__link" href="#" routerLink="/login/register" routerLinkActive="active" >Registrarse</a>
+      <a *ngIf="!loginService.isLoggetIn()" class="navbar__link" href="#"  routerLink="/login/login" routerLinkActive="active" >Iniciar sesión</a>
+      <a *ngIf="loginService.isLoggetIn()" (click)="logout()"  class="navbar__link" href="/login/login">Cerrar sesión</a>
+    </div>
+  </div>
+</body>

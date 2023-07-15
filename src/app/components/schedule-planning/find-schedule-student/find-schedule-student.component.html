@@ -1,0 +1,40 @@
+<div *ngIf="loginService.getUserRole() === 'STUDENT'">
+  <app-start-student></app-start-student>
+</div>
+
+
+<body>
+  <main class="table">
+      <section class="table__header">
+          <h1>MIS HORARIOS
+          </h1>
+      </section>
+      <section class="table__body">
+          <table>
+              <thead>
+                  <tr>
+                      <th> ID </th>
+                      <th> Título </th>
+                      <th> Fecha </th>
+                      <th> Hora de inicio </th>
+                      <th> Hora de fin </th>
+                      <th> Estado </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let schedule of dataSource.data">
+                      <td>{{ schedule.idSchedule }}</td>
+                      <td>{{ schedule.title }}</td>
+                      <td>{{ schedule.date }}</td>
+                      <td>{{ schedule.hourStart }}</td>
+                      <td>{{ schedule.hourEnd }}</td>
+                      <td >{{ schedule.state }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </section>
+  </main>
+</body>
+
+
+

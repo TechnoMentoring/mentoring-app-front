@@ -1,0 +1,72 @@
+<p>
+  update-schedule works!
+</p>
+<div class="formularioSchedule">
+  <form class="formulario" [formGroup]="scheduleForm" (ngSubmit)="createSchedule()">
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="Título">
+      <mat-error *ngIf="scheduleForm.get('title')?.invalid && scheduleForm.get('title')?.touched">
+        Por favor ingrese un título válido
+      </mat-error>
+      <mat-error *ngIf="scheduleForm.get('title')?.hasError('required')">
+        El título es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="scheduleForm.get('date')?.hasError('required')">
+        La fecha es <strong>requerida</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="hourStart" placeholder="Hora de inicio" [ngxTimepicker]="timepicker1">
+      <ngx-material-timepicker #timepicker1></ngx-material-timepicker>
+      <mat-error *ngIf="scheduleForm.get('hourStart')?.hasError('required')">
+        La hora de inicio es <strong>requerida</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="hourEnd" placeholder="Hora de fin" [ngxTimepicker]="timepicker2">
+      <ngx-material-timepicker #timepicker2></ngx-material-timepicker>
+      <mat-error *ngIf="scheduleForm.get('hourEnd')?.hasError('required')">
+        La hora de fin es <strong>requerida</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput formControlName="description" placeholder="Descripcion"></textarea><mat-error *ngIf="scheduleForm.get('descripcion')?.invalid && scheduleForm.get('descripcion')?.touched">
+        Por favor ingrese una descripcion válida
+      </mat-error>
+      <mat-error *ngIf="scheduleForm.get('description')?.hasError('required')">
+        La descripcion es <strong>requerida</strong>
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-select placeholder="Estado" formControlName="state">
+        <mat-option value="disponible">Disponible</mat-option>
+        <mat-option value="ocupado">Ocupado</mat-option>
+        <mat-option value="cancelado">Cancelado</mat-option>
+        <mat-option value="pendiente">Pendiente</mat-option>
+        <mat-option value="enproceso">En proceso</mat-option>
+        <mat-option value="finalizado">Finalizado</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+   <div class="boton">
+    <button class="formularioboton" mat-raised-button color="primary" type="submit">Actualizar Horario</button>
+   </div>
+  </form>
+
+  <div class="no-data-message" *ngIf="noDataMessage">
+    <span class="no-data-icon">⚠️</span>
+    <span class="no-data-text">{{ noDataMessage }}</span>
+  </div>
+
+</div>

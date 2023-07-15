@@ -1,0 +1,66 @@
+<div *ngIf="loginService.getUserRole() === 'STUDENT'">
+  <app-start-student></app-start-student>
+</div>
+
+<body>
+  <main class="table">
+    <section class="table__header">
+      <h1>REGISTRAR SOLICITUD</h1>
+    </section>
+    <section class="table__body">
+      <div class="container">
+        <div class="row justify-content-center">
+          <form
+            class="formulario"
+            [formGroup]="requestForm"
+            (ngSubmit)="createRequest()"
+          >
+            <div class="form-group">
+              <label for="title" class="form-label">Título</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                formControlName="title"
+                placeholder="Título"
+              />
+              <div *ngIf="requestForm.get('title')?.hasError('required')">
+               Ingrese un titulo
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="form-label">Descripción</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                formControlName="description"
+                placeholder="Descripción"
+              />
+              <div *ngIf="requestForm.get('description')?.hasError('required')">
+                Ingrese una descripcion
+              </div>
+            </div>
+            <div class="botones">
+              <div class="d-grid col-5">
+                <button
+                  mat-raised-button
+                  color="warn"
+                  class="btn"
+                  (click)="goBack()"
+                >
+                  Atrás
+                </button>
+              </div>
+              <div class="d-grid col-5">
+                <button type="submit" class="btn btn-primary">
+                  Solicitar cita
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

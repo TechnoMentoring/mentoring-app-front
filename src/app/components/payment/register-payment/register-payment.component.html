@@ -1,0 +1,71 @@
+<div *ngIf="loginService.getUserRole() === 'STUDENT'">
+  <app-start-student></app-start-student>
+</div>
+
+<body>
+  <main class="table">
+    <section class="table__header">
+      <h1>CREAR PAGO</h1>
+    </section>
+    <section class="table__body">
+      <div class="container">
+        <div class="row justify-content-center">
+          <form
+            class="formulario"
+            [formGroup]="paymentForm"
+            (ngSubmit)="createPayment()"
+          >
+            <div class="form-group">
+              <label for="amount" class="form-label">Monto</label>
+              <input
+                type="text"
+                class="form-control"
+                id="amount"
+                formControlName="amount"
+                placeholder="Monto"
+              />
+              <div *ngIf="paymentForm.get('amount')?.hasError('required')">
+                Ingrese un monto
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="codPayment" class="form-label">Código</label>
+              <input
+                type="text"
+                class="form-control"
+                id="codPayment"
+                formControlName="codPayment"
+                placeholder="Código"
+              />
+              <div *ngIf="paymentForm.get('codPayment')?.hasError('required')">
+                Ingrese un código
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="form-label">Descripción</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                formControlName="description"
+                placeholder="Descripción"
+              />
+              <div *ngIf="paymentForm.get('description')?.hasError('required')">
+                Ingrese una descripción
+              </div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Agregar pago
+              </button>
+            </div>
+          </form>
+          <div class="no-data-message" *ngIf="noDataMessage">
+            <span class="no-data-icon">⚠️</span>
+            <span class="no-data-text">{{ noDataMessage }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
